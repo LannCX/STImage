@@ -1,0 +1,14 @@
+.idea/
+.vscode/
+__pycache__/
+
+log/
+out_images/
+output/
+checkpoints/
+models/
+legency/
+
+experiments/something-something.yaml
+*.pkl
+

@@ -1,0 +1,51 @@
+AUTO_RESUME: false
+GPUS: (3,0,1,2)
+WORKERS: 12
+PRINT_FREQ: 100
+PRINT_PARAM: false
+IS_TRAIN: true
+USE_VAL: true
+USE_SSL: false
+
+DATASET:
+  ROOT: '/data_ssd/chenxu/workspace/HMDB51'
+  ANNO_FILE: '/data_ssd/chenxu/Code/stimage/pre_processing/hmdb51/annotations'
+  CLS_FILE: '/data_ssd/chenxu/Code/stimage/pre_processing/hmdb51/class_id.json'
+  NAME: 'hmdb51'
+  VERSION: 'split1'
+  T_SIZE: 8
+  K: 1
+  SCALE_SIZE: [128, 128]
+  CROP_SIZE: [112, 112]
+  P_SHUFFLE: false
+
+MODEL:
+  NUM_CLASSES: 51
+  NAME: InceptionV1
+  USE_ATTENTION: false
+  USE_HEAVY: false
+  HIST_SHOW_NAME: []
+#  PRETRAINED: 'models/googlenet-1378be20.pth'
+
+TRAIN:
+  WARM_UP: true
+  WARM_UP_EPOCHS: 10
+  PRE_FRFETCH: true
+  BATCH_SIZE: 16
+  SHUFFLE: true
+  BEGIN_EPOCH: 1
+  END_EPOCH: 90
+  OPTIMIZER: sgd
+  LR: 0.01
+  WD: 5e-4
+  MOMENTUM: 0.9
+  NESTEROV: true
+  LR_FACTOR: 0.1
+  LR_STEP:
+    - 30
+    - 50
+    - 60
+TEST:
+  VAL_FREQ: 10
+  INIT_VAL: false
+  BATCH_SIZE: 1
